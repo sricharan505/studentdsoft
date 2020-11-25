@@ -17,7 +17,7 @@ public:
 	string des;
 	node* next{};
 	node* pre{};
-	node(){};       //this is added to remove node::name uninitialized type error
+	//node(){};       //this is added to remove node::name uninitialized type error
 
 };
 class studentlist
@@ -25,12 +25,14 @@ class studentlist
 private:
 	node* first=NULL;
 	node* last=NULL;
+	int numstu=0;
 public:
 	void studentdetails();
 
 	void addstudent();
 	void addmulstudents();
 	void displaylist();
+	void displaynumstu();
 };
 
 void studentlist::studentdetails()
@@ -40,10 +42,12 @@ void studentlist::studentdetails()
 	while (1)
 	{
 		int in;
-		cout << "press 1 to add a student to the list" << endl;
-		cout << "press 2 to add more than one student to the list" << endl;
-		cout << "press 3 to display the entrire studentlist" << endl;
-		cout<< "press 0 to quit" << endl;
+		cout << "press 1 to add a student to the database" << endl;
+		cout << "press 2 to add more than one student to the database" << endl;
+		cout << "press 3 to display the entrire student database" << endl;
+		cout << "press 4 to display the number of students in the database" << endl;
+		cout << "press 5 to delete student from the database" << endl;
+		cout<< "press 0 to quit studentsoft" << endl;
 		cin >> in;
 		if (in == 0)
 			break;
@@ -52,6 +56,7 @@ void studentlist::studentdetails()
 			case 1:addstudent(); break;
 			case 2:addmulstudents(); break;
 			case 3:displaylist(); break;
+			case 4:displaynumstu(); break;
 			default:break;
 		}
 
@@ -96,6 +101,7 @@ void studentlist:: addstudent()
 		last = temp;
 		last->next = nullptr;
 	}
+	numstu++;
 
 }
 void studentlist::addmulstudents()
@@ -131,6 +137,11 @@ void studentlist::displaylist()
 		
 	}
 
+
+}
+void studentlist::displaynumstu()
+{
+	cout << "number of students in the database are " << numstu << endl;
 
 }
 int main()
